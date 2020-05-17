@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import { User } from '../../models'
 import { Dropdown } from '../../components'
-import { Content, EditContent } from '../content'
+import Content from '../content'
 import { EditButton, SaveButton, DeleteButton } from '../buttons'
 import modalDispatch from '../modal/dispatch'
 import FollowUpUserInfo from './FollowUpUserInfo'
+import { FollowUp } from '../../models'
+import { FollowUpType } from '../../models/follow-up'
 
 type FollowUpCard = {
   followUp: FollowUp,
-  updateFollowUp: (followUp: FollowUp) => void,
+  updateFollowUp: (followUp: FollowUpType) => void,
   deleteFollowUp: (followUpID: number) => void,
   canEdit: boolean,
   user: User,
@@ -48,12 +50,10 @@ const FollowUpCard = ({ followUp, updateFollowUp, deleteFollowUp, canEdit, user,
   return (
     <div className="pt-2">
       <div className="d-flex justify-content-between">
-        <FollowUpUserInfo user={user} date={followUp.date} role={role} />
+        <FollowUpUserInfo user={user} date={followUp.dateFormatted} role={role} />
         {canEdit ? <FollowUpButtons id={followUp.id} editMode={editMode} saveOnPress={saveFollowUp} editOnPress={editOnPress} deleteOnPress={deleteOnPress} /> : null}
       </div>
-      {editMode
-        ? <EditContent content={content} onChange={updateContent} />
-        : <Content className="ml-4 border-left pl-3" content={content} />}
+      {<Content className="ml-4 border-left pl-3" content={content} onChange={updateContent} editing={editMode} />}
     </div>
   )
 }

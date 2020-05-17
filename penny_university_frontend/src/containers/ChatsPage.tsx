@@ -3,7 +3,6 @@ import { AnyAction } from 'redux'
 import { ThunkDispatch } from 'redux-thunk'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { Button } from 'reactstrap'
 import InfiniteScroll from "react-infinite-scroller"
 import { loadChatsList } from '../actions'
 import { ChatCard } from '../components/chats'
@@ -51,7 +50,6 @@ const ChatsPage = ({ filteredChats, nextPageUrl, loadChatsList, getChatByID, isF
 const mapStateToProps = (state: RootState) => {
   const {
     pagination: { chatsByFilter },
-    entities: { chats, users },
   } = state
   // @ts-ignore
   const chatsPagination = chatsByFilter.all || { ids: [] }

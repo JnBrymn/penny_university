@@ -1,6 +1,8 @@
-import { schema, Schema } from 'normalizr'
+import { schema } from 'normalizr'
 import Chat, { ChatType } from './chat'
 import User, { UserType } from './user'
+import FollowUp, { FollowUpType } from './follow-up'
+
 
 const userSchema = new schema.Entity('users', {}, {
   idAttribute: (user: User) => user.id.toString(),
@@ -22,6 +24,7 @@ const followUpSchema = new schema.Entity('followUps', {
   user: userSchema,
 }, {
   idAttribute: (followUp: FollowUp) => followUp.id.toString(),
+  processStrategy: (value: FollowUpType) => new FollowUp(value),
 })
 
 // Schemas for the responses from the API

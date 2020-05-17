@@ -1,9 +1,7 @@
-import { AnyAction } from 'redux'
-import { ThunkDispatch } from 'redux-thunk'
 import { CALL_API } from '../middleware/api'
-import { RootState } from '../reducers'
 import { Schemas } from '../models/schemas'
 import ApiRoutes  from '../constants'
+import { FollowUp } from '../models'
 
 export const CHATS_LIST_REQUEST = 'CHATS_LIST_REQUEST'
 export const CHATS_LIST_SUCCESS = 'CHATS_LIST_SUCCESS'

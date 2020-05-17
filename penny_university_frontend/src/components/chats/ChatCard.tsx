@@ -4,8 +4,7 @@ import {
   Card,
   CardTitle,
 } from 'reactstrap'
-import Date from '../Date'
-import { Content } from '../content'
+import Content  from '../content'
 import ParticipantList from './ParticipantList'
 import { Chat } from '../../models'
 
@@ -20,7 +19,7 @@ const ChatCard = ({ chat }: ChatCardProps) =>
       <CardTitle tag="h5">
         <Link className="text-reset" to={`/chats/${chat.id}`}>{chat.title}</Link>
       </CardTitle>
-      <Date className="text-secondary" date={chat.date} />
+      <strong className="text-secondary">{chat.dateFormatted}</strong>
       {chat.description
         ? <Content content={chat.description} /> : null}
       <div className="d-flex">

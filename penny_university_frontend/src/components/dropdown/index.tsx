@@ -14,7 +14,9 @@ const Dropdown = ({ header, options, id }: DropdownProps) => {
       <MoreOptions id={id} />
       <UncontrolledPopover trigger="legacy" placement="bottom" target={id}>
         <PopoverHeader>{header}</PopoverHeader>
-        {options}
+        <PopoverBody>
+          {options}
+        </PopoverBody>
       </UncontrolledPopover>
     </>
   )

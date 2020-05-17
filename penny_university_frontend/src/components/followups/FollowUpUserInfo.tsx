@@ -1,7 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-import Date from '../Date'
 import { User } from '../../models'
 
 type FollowUpUserInfo = {
@@ -20,7 +19,7 @@ const FollowUpUserInfo = ({ date, user, role }: FollowUpUserInfo) => (
         {user.displayName}
         {role === 'Organizer' ? ` - ${role}` : ''}
       </h6>
-      <Date className="text-secondary" date={date} />
+      <strong className="text-secondary">{date}</strong>
     </div>
   </div>
 )

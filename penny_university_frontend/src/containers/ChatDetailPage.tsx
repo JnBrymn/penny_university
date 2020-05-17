@@ -9,7 +9,8 @@ import {
 import { ChatDetail } from '../components/chats'
 import * as selectors from '../selectors'
 import { RootState } from '../reducers'
-import { Chat, User } from '../models'
+import { Chat, User, FollowUp } from '../models'
+import { FollowUpType } from '../models/follow-up'
 
 type StateProps = {
   id: number,
@@ -23,7 +24,7 @@ type DispatchProps = {
   loadChatDetail: (id: number) => void,
   loadFollowUps: (id: number, nextPageUrl?: string) => void,
   createFollowUp: (chatID: number, content: { content: string }) => void,
-  updateFollowUp: (followup: FollowUp) => void,
+  updateFollowUp: (followup: FollowUpType) => void,
   deleteFollowUp: (chatID: number, id: number) => void,
   deleteChat: (chatID: number) => void,
 }

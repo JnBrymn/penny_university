@@ -6,11 +6,11 @@ import {
   HeartButton, CreateButton, SaveButton, CancelButton, DeleteButton,
 } from '../buttons'
 import Dropdown from '../dropdown'
-import Date from '../Date'
-import { Content, EditContent } from '../content'
+import Content from '../content'
 import { FollowUpCard } from '../followups'
 import modalDispatch from '../modal/dispatch'
-import { Chat, User } from '../../models'
+import { Chat, User, FollowUp } from '../../models'
+import { FollowUpType } from '../../models/follow-up'
 import { Routes } from '../../constants'
 
 require('./styles.scss')
@@ -19,7 +19,7 @@ interface ChatDetailProps extends RouteComponentProps<any> {
   chat: Chat,
   followUps: Array<FollowUp>,
   createFollowUp: (id: number, content: { content: string }) => void,
-  updateFollowUp: (followup: FollowUp) => void,
+  updateFollowUp: (followup: FollowUpType) => void,
   deleteFollowUp: (chatID: number, id: number) => void,
   deleteChat: (chatID: number) => void,
   user: User,
@@ -76,7 +76,7 @@ const ChatDetail = ({
             ]}
           /> : null}
         </div>
-        <Date className="text-secondary" date={chat.date} />
+        <strong className="text-secondary">{chat.dateFormatted}</strong>
         {chat.description ? <Content className="mb-4" content={chat.description} /> : null}
         <div className="mb-4">
           <HeartButton className="mr-2" count={followUps.length} />
@@ -87,7 +87,7 @@ const ChatDetail = ({
           {' '}
           Follow Ups
         </h5>
-        {followUps.map((followUp) => {
+        {followUps.map((followUp: FollowUp) => {
           const followUpUser = getUserByID(followUp.user)
           const role = chat.getUserRole(followUp.user)
           return (
@@ -107,7 +107,7 @@ const ChatDetail = ({
           ? (
             <div>
               <h5>Add New Follow Up:</h5>
-              <EditContent content={followUpContent} onChange={updateFollowUpContent} />
+              <Content content={followUpContent} onChange={updateFollowUpContent} editing />
               <div className="mt-2">
                 <SaveButton type="Follow Up" onClick={saveNewFollowUp} />
                 <CancelButton className="ml-2" onClick={() => toggleAddFollowUpMode(false)} />

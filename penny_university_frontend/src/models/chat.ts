@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export interface ChatType {
   id: number,
   title: string,
@@ -17,6 +19,7 @@ class Chat implements ChatType {
   followups: string
   url: string
   participants: Array<Participant>
+
   constructor(data: ChatType = { id: NaN, title: '', date: '', description: '', followups: '', url: '', participants: []}) {
     this.id = data.id
     this.title = data.title
@@ -38,6 +41,10 @@ class Chat implements ChatType {
 
   get valid() {
     return !Number.isNaN(this.id)
+  }
+
+  get dateFormatted(): string {
+    return moment(this.date).format('M/D/YYYY')
   }
 }
 

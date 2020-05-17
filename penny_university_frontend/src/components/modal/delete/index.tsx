@@ -1,8 +1,8 @@
 // @flow
 
-import React, { useState } from 'react'
+import React from 'react'
 import {
-  ModalHeader, ModalBody, Button,
+  ModalHeader, ModalBody
 } from 'reactstrap'
 import modalDispatch from '../dispatch'
 import { DeleteButton, CancelButton } from '../../buttons'

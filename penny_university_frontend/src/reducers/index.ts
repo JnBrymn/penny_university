@@ -11,7 +11,7 @@ import userMiddleware from '../middleware/user'
 import { Schemas } from '../models/schemas'
 
 // Eventually we will want to move this into a DEV configuration
-const composeEnhancers = (<any>window).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // Updates an entity cache in response to any action
 // with response.entities, such as a CHATS_LIST_SUCCESS
